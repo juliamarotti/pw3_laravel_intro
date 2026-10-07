@@ -7,9 +7,20 @@ use App\Http\Controllers\LivroController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventoController;
 
+Route::get('/admin', [UserController::class, 'index']);
+
+// Rotas de criação
+Route::get('/usuarios/novo', [UserController::class, 'create']);
+Route::post('/usuarios', [UserController::class, 'store']);
+
+// Rotas de edição e atualização
+Route::get('/usuarios/{id}/editar', [UserController::class, 'edit']);
+Route::put('/usuarios/{id}', [UserController::class, 'update']);
+
 Route::get('/', function () {
     return view('home');
 });
+
 Route::view('/landing', '/landing');
 Route::view('/admin', 'admin.dashboard');
 Route::get('/teste-orm', function () {
